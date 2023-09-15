@@ -53,27 +53,7 @@ export const CardProfileContainer = styled.div`
     p {
       font-size: ${(props) => props.theme.size.M};
       color: ${(props) => props.theme.colors.BASE_TEXT};
-    }
-    div.card-list {
-      display: flex;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-
-      div {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-
-        svg {
-          height: 18px;
-          width: 18px;
-          fill: ${(props) => props.theme.colors.BASE_LABEL};
-        }
-        span {
-          font-size: ${(props) => props.theme.size.M};
-          color: ${(props) => props.theme.colors.BASE_SUBTITLE};
-        }
-      }
+      margin-bottom: 1.5rem;
     }
   }
 `

@@ -1,10 +1,9 @@
 import { ReactSVG } from 'react-svg'
 
+import { ListInfoCard } from '../ListInfoCard'
+
 import { CardProfileContainer } from './styles'
-import building from '../../assets/building.svg'
-import githubLogo from '../../assets/github.svg'
 import arrowSquareOut from '../../assets/arrow-up-right-square.svg'
-import usersGroupSvg from '../../assets/user-group.svg'
 
 export function CardProfile() {
   return (
@@ -27,20 +26,7 @@ export function CardProfile() {
           viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
           pulvinar vel mass.
         </p>
-        <div className="card-list">
-          <div>
-            <ReactSVG src={githubLogo} />
-            <span>camaronwill</span>
-          </div>
-          <div>
-            <ReactSVG src={building} />
-            <span>Rocketseat</span>
-          </div>
-          <div>
-            <ReactSVG src={usersGroupSvg} />
-            <span>32 seguidores</span>
-          </div>
-        </div>
+        <ListInfoCard />
       </div>
     </CardProfileContainer>
   )
