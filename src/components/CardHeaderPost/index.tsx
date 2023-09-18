@@ -1,13 +1,27 @@
 import { NavLink } from 'react-router-dom'
-import { ListInfoCard } from '../ListInfoCard'
-
-import { CardHeaderPostContainer } from './styles'
 import { CaretLeft } from 'phosphor-react'
 import { ReactSVG } from 'react-svg'
 
+import { ListInfoCard } from '../ListInfoCard'
+
+import { CardHeaderPostContainer } from './styles'
 import arrowSquareOut from '../../assets/arrow-up-right-square.svg'
 
-export function CardHeaderPost() {
+interface CardHeaderPostProps {
+  title: string
+  urlGithub: string
+  nameUser: string
+  createdAt: Date
+  comments: number
+}
+
+export function CardHeaderPost({
+  nameUser,
+  comments,
+  createdAt,
+  title,
+  urlGithub,
+}: CardHeaderPostProps) {
   return (
     <CardHeaderPostContainer>
       <div className="card-options">
@@ -15,13 +29,17 @@ export function CardHeaderPost() {
           <CaretLeft weight="bold" />
           VOLTAR
         </NavLink>
-        <a href="https://github.com/EduardoArad">
+        <a href={urlGithub} target="_blank" rel="noreferrer">
           VER NO GITHUB
           <ReactSVG src={arrowSquareOut} />
         </a>
       </div>
-      <p>JavaScript data types and data structures</p>
-      <ListInfoCard />
+      <p>{title}</p>
+      <ListInfoCard
+        nameUser={nameUser}
+        createdAt={createdAt}
+        comments={comments}
+      />
     </CardHeaderPostContainer>
   )
 }

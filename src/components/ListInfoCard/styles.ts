@@ -14,7 +14,9 @@ export const ListInfoCardContainer = styled.div`
       width: 18px;
       fill: ${(props) => props.theme.colors.BASE_LABEL};
     }
-    span {
+
+    span,
+    time {
       font-size: ${(props) => props.theme.size.M};
       color: ${(props) => props.theme.colors.BASE_SUBTITLE};
     }

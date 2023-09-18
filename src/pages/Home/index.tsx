@@ -1,4 +1,6 @@
-import { ChangeEvent, Fragment, useState } from 'react'
+import { ChangeEvent, Fragment, useEffect, useState } from 'react'
+
+import { useUserIsses } from '../../hooks/useUserIsses'
 
 import { CardPost } from '../../components/CardPost'
 import { CardProfile } from '../../components/CardProfile'
@@ -6,6 +8,8 @@ import { CardProfile } from '../../components/CardProfile'
 import { HomeInfo, Input, ListPost } from './styles'
 
 export function Home() {
+  const { isses, searchIsses } = useUserIsses()
+
   const [search, setSearch] = useState('')
 
   function handleSetSearch({
@@ -14,12 +18,18 @@ export function Home() {
     setSearch(value)
   }
 
+  const numberAllPosts = isses.length
+
+  useEffect(() => {
+    searchIsses(search)
+  }, [search, searchIsses])
+
   return (
     <Fragment>
       <CardProfile />
       <HomeInfo>
         <p>Publicações</p>
-        <span>6 publicações</span>
+        <span>{numberAllPosts} publicações</span>
       </HomeInfo>
       <Input
         placeholder="Buscar conteúdo"
@@ -27,9 +37,15 @@ export function Home() {
         onChange={handleSetSearch}
       />
       <ListPost>
-        <CardPost />
-        <CardPost />
-        <CardPost />
+        {isses.map((isse) => (
+          <CardPost
+            key={isse.id}
+            title={isse.title}
+            body={isse.body}
+            createdAt={new Date(isse.created_at)}
+            urlPost={isse.url}
+          />
+        ))}
       </ListPost>
     </Fragment>
   )

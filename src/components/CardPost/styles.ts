@@ -20,12 +20,12 @@ export const CardPostContainer = styled.button`
     align-items: flex-start;
     margin-bottom: 1.25rem;
 
-    p {
+    span {
       flex: 1;
       font-size: ${(props) => props.theme.size.XL};
       color: ${(props) => props.theme.colors.BASE_TITLE};
     }
-    span {
+    time {
       font-size: ${(props) => props.theme.size.S};
       color: ${(props) => props.theme.colors.BASE_SPAN};
       margin-top: 4px;

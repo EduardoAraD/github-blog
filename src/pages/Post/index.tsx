@@ -1,23 +1,55 @@
-import { Fragment } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
+
+import { useUserIsses } from '../../hooks/useUserIsses'
+
+import { IssesComplete, issesCompleteEmpty } from '../../Model/Isses'
+
 import { CardHeaderPost } from '../../components/CardHeaderPost'
+
+import { getIssesComplete } from '../../lib/github'
 
 import { PostContainer } from './styles'
 
 export function Post() {
+  const navigate = useNavigate()
+  const { isseUrlActive } = useUserIsses()
+  const [postComplete, setPostComplete] =
+    useState<IssesComplete>(issesCompleteEmpty)
+
+  const loadPost = useCallback(async () => {
+    if (isseUrlActive !== '') {
+      const isseComp = await getIssesComplete(isseUrlActive)
+      setPostComplete(isseComp)
+    } else {
+      navigate('')
+    }
+  }, [isseUrlActive, navigate])
+
+  useEffect(() => {
+    loadPost()
+  }, [loadPost])
+
+  const createdAtDate =
+    postComplete.created_at !== ''
+      ? new Date(postComplete.created_at)
+      : new Date()
+
   return (
     <Fragment>
-      <CardHeaderPost />
-      {/* <div dangerouslySetInnerHTML={} /> */}
-      <PostContainer>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in JavaScript and what properties
-        they have. These can be used to build other data structures. Wherever
-        possible, comparisons with other languages are drawn. Dynamic typing
-        JavaScript is a loosely typed and dynamic language. Variables in
-        JavaScript are not directly associated with any particular value type,
-        and any variable can be assigned (and re-assigned) values of all types:
-      </PostContainer>
+      <CardHeaderPost
+        comments={postComplete.comments}
+        createdAt={createdAtDate}
+        nameUser={postComplete.user.login}
+        title={postComplete.title}
+        urlGithub={postComplete.html_url}
+      />
+      {postComplete.body && (
+        <PostContainer>
+          <ReactMarkdown>{postComplete.body}</ReactMarkdown>
+        </PostContainer>
+      )}
     </Fragment>
   )
 }
