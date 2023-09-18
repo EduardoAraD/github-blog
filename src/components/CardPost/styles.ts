@@ -4,6 +4,7 @@ export const CardPostContainer = styled.button`
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  width: 100%;
   border: none;
   text-align: initial;
 
@@ -24,6 +25,12 @@ export const CardPostContainer = styled.button`
       flex: 1;
       font-size: ${(props) => props.theme.size.XL};
       color: ${(props) => props.theme.colors.BASE_TITLE};
+
+      overflow: hidden; /* remove o estouro do elemento */
+      text-overflow: ellipsis; /* adiciona “...” no final */
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* quantidade de linhas */
+      -webkit-box-orient: vertical;
     }
     time {
       font-size: ${(props) => props.theme.size.S};
@@ -34,6 +41,7 @@ export const CardPostContainer = styled.button`
   p {
     font-size: ${(props) => props.theme.size.M};
     color: ${(props) => props.theme.colors.BASE_TEXT};
+    width: 100%;
 
     overflow: hidden; /* remove o estouro do elemento */
     text-overflow: ellipsis; /* adiciona “...” no final */
@@ -44,5 +52,11 @@ export const CardPostContainer = styled.button`
 
   &:hover {
     border-color: ${(props) => props.theme.colors.BASE_LABEL};
+  }
+
+  @media (max-width: 450px) {
+    div {
+      flex-direction: column;
+    }
   }
 `

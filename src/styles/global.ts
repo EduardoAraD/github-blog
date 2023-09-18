@@ -21,4 +21,16 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font: 400 ${(props) => props.theme.size.M} Nunito, sans-serif;
   }
+
+  @media (max-width: 1080px) {
+    font {
+      font-size: 93.75%; // 15px
+    }
+  }
+
+  @media (max-width: 720px) {
+    font {
+      font-size: 87.5%; // 14px
+    }
+  }
 `

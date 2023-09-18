@@ -17,4 +17,9 @@ export const HeaderContainer = styled.header`
     align-self: flex-start;
     margin: 4rem;
   }
+
+  @media (max-width: 1000px) {
+    justify-content: center;
+    overflow: hidden;
+  }
 `

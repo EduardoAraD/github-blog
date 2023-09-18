@@ -6,7 +6,9 @@ export const LayoutContainer = styled.div`
   overflow: auto;
 
   .content {
-    max-width: 54rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 58rem;
     width: 100%;
     margin: 0 auto 0;
     margin-top: -5.5rem;

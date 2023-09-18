@@ -54,6 +54,33 @@ export const CardProfileContainer = styled.div`
       font-size: ${(props) => props.theme.size.M};
       color: ${(props) => props.theme.colors.BASE_TEXT};
       margin-bottom: 1.5rem;
+
+      overflow: hidden; /* remove o estouro do elemento */
+      text-overflow: ellipsis; /* adiciona “...” no final */
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* quantidade de linhas */
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+
+    .card-info {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 450px) {
+    div.card-name {
+      flex-direction: column;
+      span {
+        text-align: center;
+      }
+      a {
+        margin-top: 0.4rem;
+      }
     }
   }
 `

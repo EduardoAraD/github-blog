@@ -10,6 +10,7 @@ export const CardHeaderPostContainer = styled.div`
 
   div.card-options {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
@@ -35,5 +36,15 @@ export const CardHeaderPostContainer = styled.div`
     color: ${(props) => props.theme.colors.BASE_TITLE};
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
+  }
+
+  @media (max-width: 400px) {
+    div.card-options {
+      flex-direction: column;
+
+      a {
+        padding: 0.4rem;
+      }
+    }
   }
 `

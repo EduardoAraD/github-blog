@@ -21,4 +21,9 @@ export const ListInfoCardContainer = styled.div`
       color: ${(props) => props.theme.colors.BASE_SUBTITLE};
     }
   }
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
